@@ -12,17 +12,24 @@ SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSpbLpst0sFzIkzLZi0
 def load_rows():
     df = pd.read_csv(SHEET_URL)
 
-    # מצפה לשתי עמודות:
-    # keywords | answer
+    # מנקה רווחים בשמות עמודות
+    df.columns = df.columns.str.strip()
+
+    print("COLUMNS:", df.columns.tolist())
+
+    if "keywords" not in df.columns or "answer" not in df.columns:
+        raise Exception("Sheet must have keywords + answer columns")
+
     rows = []
+
     for _, r in df.iterrows():
-        if pd.isna(r[0]) or pd.isna(r[1]):
+        if pd.isna(r["keywords"]) or pd.isna(r["answer"]):
             continue
 
-        rows.append({
-            "keywords": str(r[0]).lower(),
-            "answer": str(r[1])
-        })
+        keys = str(r["keywords"]).lower().split()
+        ans = str(r["answer"])
+
+        rows.append((keys, ans))
 
     return rows
 
@@ -35,21 +42,16 @@ def score(question, keywords):
 @app.route("/search", methods=["POST"])
 def search():
     data = request.get_json() or {}
-    q = data.get("question", "").strip()
-
-    if not q:
-        return {"error": "no question"}, 400
+    q = data.get("question", "").lower()
 
     rows = load_rows()
 
-    if not rows:
-        return {"error": "sheet empty"}, 400
+    for keys, ans in rows:
+        for k in keys:
+            if k in q:
+                return {"answer": ans}
 
-    best = max(rows, key=lambda r: score(q, r["keywords"]))
-
-    return jsonify({
-        "match": best["answer"]
-    })
+    return {"answer": "No match"}
 
 
 if __name__ == "__main__":
