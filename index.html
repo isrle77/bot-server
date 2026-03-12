@@ -138,18 +138,38 @@
           transform: translateY(0);
         }
       }
+
+      .target-box {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .target-item {
+        background: #111118;
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        font-size: 18px;
+        font-weight: 500;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+      }
+
+      .target-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      }
     </style>
   </head>
 
   <body>
     <div class="section hero">
-      <h1>מפסיקים לענות על אותן שאלות שוב ושוב</h1>
-      <p>
-        בוט מענה אוטומטי לוואטסאפ לנותני שירותים מקצועיים – מסנן שאלות חוזרות
-        וחוסך לכם 3–5 שעות ביום.
-      </p>
-      <a href="https://wa.me/972XXXXXXXXX" class="btn"
-        >לדבר איתי בוואטסאפ עכשיו</a
+      <h1>יש לך לקוחות ששואלים שוב ושוב את אותן שאלות</h1>
+      <p>בוט מענה אוטומטי שעונה ללקוחות במקומך וחוסך שעות ביום</p>
+      <a href="https://wa.me/9724338662" class="btn"
+        >שאל אותי איך הבוט יכול לעבוד בעסק שלך</a
       >
     </div>
 
@@ -223,10 +243,15 @@
     </div>
 
     <div class="section">
-      <h2>כמה זה עולה?</h2>
-      <p class="price">₪299 בלבד</p>
-      <p>התקנה תוך 24 שעות + ליווי ותמיכה שקט נפשי לחודש.</p>
-      <a href="https://wa.me/972XXXXXXXXX" class="btn">אני רוצה בוט לעסק שלי</a>
+      <h2>למי הבוט מתאים במיוחד?</h2>
+
+      <div class="target-box">
+        <div class="target-item">✔ מטפלים ויועצים</div>
+        <div class="target-item">✔ עורכי דין</div>
+        <div class="target-item">✔ מאמנים</div>
+        <div class="target-item">✔ נותני שירותים מקצועיים</div>
+        <div class="target-item">✔ עסקים שמקבלים הרבה הודעות בוואטסאפ</div>
+      </div>
     </div>
 
     <div class="section faq">
@@ -251,6 +276,18 @@
         <h4>מה אם אני רוצה התאמה אישית?</h4>
         <p>אפשר להוסיף התאמות לפי סוג השירות והעסק שלכם.</p>
       </div>
+    </div>
+
+    <div class="section">
+      <h2>
+        יש לכם שאלות שחוזרות אצל לקוחות? שלחו לי דוגמה ואני אראה איך הבוט יכול
+        לענות עליהן.
+      </h2>
+      <p class="price">
+        רוצים לראות איך זה עובד? אני מראה הדגמה מותאמת לעסק שלכם.
+      </p>
+      <p>פתרון מלא החל מ-₪299</p>
+      <a href="https://wa.me/9724338662" class="btn">אני רוצה בוט לעסק שלי</a>
     </div>
 
     <footer>© 2026 בוט מענה אוטומטי | כל הזכויות שמורות</footer>
